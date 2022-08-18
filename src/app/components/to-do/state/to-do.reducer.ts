@@ -9,7 +9,10 @@ export const initialToDoState: ToDoState = {
 
 }
 
-export const toDoReducer = (state: ToDoState = initialToDoState, action: ToDoActionUnion): ToDoState=> {
+export const toDoReducer = (
+  state: ToDoState = initialToDoState,
+  action: ToDoActionUnion
+  ): ToDoState=> {
   switch (action.type) {
     case ToDoActionTypes.CREATE_TASK: {
       const newId: number = state.taskList.length + 1;
@@ -37,6 +40,7 @@ export const toDoReducer = (state: ToDoState = initialToDoState, action: ToDoAct
     }
     case ToDoActionTypes.DELETE_TASK: {
       const newTaskList: Task[] = state.taskList.filter(t=> t.id !== action.payload)
+
       return {
         taskList: [...newTaskList.sort((a,b)=> a.id - b.id)]
       }
