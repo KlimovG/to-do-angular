@@ -12,6 +12,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import {metaReducers, reducers} from "./state";
+import { AddTaskFormComponent } from './components/add-task-form/add-task-form.component';
+import { SmartAddTaskFormComponent } from './smart/smart-add-task-form/smart-add-task-form.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -19,15 +22,18 @@ import {metaReducers, reducers} from "./state";
     AddTaskComponent,
     TaskItemComponent,
     ToDoComponent,
-    TaskListComponent
+    TaskListComponent,
+    AddTaskFormComponent,
+    SmartAddTaskFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers, {metaReducers}),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
     EffectsModule.forRoot([]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
