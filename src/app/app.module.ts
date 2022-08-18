@@ -7,6 +7,7 @@ import { AddTaskComponent } from './components/add-task/add-task.component';
 import { TaskItemComponent } from './components/task-item/task-item.component';
 import { ToDoComponent } from './components/to-do/to-do.component';
 import { TaskListComponent } from './components/task-list/task-list.component';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { TaskListComponent } from './components/task-list/task-list.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StoreModule.forRoot({}, {})
   ],
   providers: [],
   bootstrap: [AppComponent]
