@@ -1,5 +1,4 @@
 import {Action} from '@ngrx/store';
-import {Task} from "../../task-item/task-item.model";
 
 export enum ToDoActionTypes {
   CREATE_TASK = '[To Do] Create new task',
@@ -9,7 +8,7 @@ export enum ToDoActionTypes {
 
 export class ToDoTaskCreate implements Action {
   readonly type = ToDoActionTypes.CREATE_TASK;
-  constructor(public payload: Task) {}
+  constructor(public payload: string) {}
 }
 
 export class ToDoTaskChange implements Action {

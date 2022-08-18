@@ -17,7 +17,17 @@ export const initialToDoState: ToDoState = {
 
 export function toDoReducer(state: ToDoState = initialToDoState, action: ToDoActionUnion): ToDoState {
   switch (action.type) {
-    case ToDoActionTypes.CREATE_TASK:
+    case ToDoActionTypes.CREATE_TASK: {
+      const newId: number = state.taskList.length + 1;
+      const newTask: Task = {
+        id: newId,
+        text: action.payload,
+        createdAt: new Date()
+      }
+      return {
+        taskList: [...state.taskList, newTask]
+      }
+    }
     case ToDoActionTypes.CHANGE_TASK:
     case ToDoActionTypes.DELETE_TASK:
     default: {
