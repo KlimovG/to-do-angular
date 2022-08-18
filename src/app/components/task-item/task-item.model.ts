@@ -4,3 +4,4 @@ export interface Task {
   createdAt: Date,
 }
 
+export type TaskChange = Omit<Task, 'createdAt'>;
