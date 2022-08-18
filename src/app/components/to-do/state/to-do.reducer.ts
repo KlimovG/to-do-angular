@@ -28,8 +28,17 @@ export function toDoReducer(state: ToDoState = initialToDoState, action: ToDoAct
         taskList: [...state.taskList, newTask]
       }
     }
-    case ToDoActionTypes.CHANGE_TASK:
-    case ToDoActionTypes.DELETE_TASK:
+    case ToDoActionTypes.CHANGE_TASK: {
+      const {id, text} = action.payload
+      const taskToChange = state.taskList.find((t: Task)=> t.id === id) as Task
+      return {
+        taskList: [...state.taskList, {
+          id,
+          text,
+          createdAt: taskToChange.createdAt
+        }]
+      }
+    }
     default: {
       return state
     }
