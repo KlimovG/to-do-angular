@@ -38,7 +38,7 @@ export const toDoReducer = (state: ToDoState = initialToDoState, action: ToDoAct
     case ToDoActionTypes.DELETE_TASK: {
       const newTaskList: Task[] = state.taskList.filter(t=> t.id !== action.payload)
       return {
-        taskList: [...newTaskList]
+        taskList: [...newTaskList.sort((a,b)=> a.id - b.id)]
       }
     }
     default: {
