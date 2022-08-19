@@ -1,1 +1,7 @@
-<p>task-list works!</p>
+<section>
+  <div
+  *ngFor="let task of tasks"
+  >
+    <app-task-item [text]="task.text"></app-task-item>
+  </div>
+</section>

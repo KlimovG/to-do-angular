@@ -1,0 +1,6 @@
+<form class="add-task-form"
+      [formGroup]="form"
+      (ngSubmit)="onSubmit.emit(this.text)">
+  <input type="text" formControlName="text">
+  <button type="submit"> Add Task</button>
+</form>

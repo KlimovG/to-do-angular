@@ -1,8 +1,13 @@
-import { Task } from "../../task-item/task-item.model";
+import * as fromRoot from '../../../state/index'
+import { TaskItem } from "../../task-item/task-item.model";
 import { ToDoActionTypes, ToDoActionUnion } from "./to-do.actions";
 
+export interface State extends fromRoot.State{
+  toDo: ToDoState,
+}
+
 export interface ToDoState {
-  taskList: Task[]
+  taskList: TaskItem[]
 }
 export const initialToDoState: ToDoState = {
   taskList: []
@@ -16,7 +21,7 @@ export const toDoReducer = (
   switch (action.type) {
     case ToDoActionTypes.CREATE_TASK: {
       const newId: number = state.taskList.length + 1;
-      const newTask: Task = {
+      const newTask: TaskItem = {
         id: newId,
         text: action.payload,
         createdAt: new Date()
@@ -28,7 +33,7 @@ export const toDoReducer = (
     }
     case ToDoActionTypes.CHANGE_TASK: {
       const {id, text} = action.payload
-      const taskToChange = state.taskList.find((t)=> t.id === id) as Task
+      const taskToChange = state.taskList.find((t)=> t.id === id) as TaskItem
 
       return {
         taskList: [...state.taskList, {
@@ -39,7 +44,7 @@ export const toDoReducer = (
       }
     }
     case ToDoActionTypes.DELETE_TASK: {
-      const newTaskList: Task[] = state.taskList.filter(t=> t.id !== action.payload)
+      const newTaskList: TaskItem[] = state.taskList.filter(t=> t.id !== action.payload)
 
       return {
         taskList: [...newTaskList.sort((a,b)=> a.id - b.id)]
@@ -50,3 +55,5 @@ export const toDoReducer = (
     }
   }
 }
+
+export const selectTasks = (state: State) => state.toDo.taskList;

@@ -15,6 +15,7 @@ import {metaReducers, reducers} from "./state";
 import { AddTaskFormComponent } from './components/add-task-form/add-task-form.component';
 import { SmartAddTaskFormComponent } from './smart/smart-add-task-form/smart-add-task-form.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { SmartTaskListComponent } from './smart/smart-task-list/smart-task-list.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     ToDoComponent,
     TaskListComponent,
     AddTaskFormComponent,
-    SmartAddTaskFormComponent
+    SmartAddTaskFormComponent,
+    SmartTaskListComponent
   ],
   imports: [
     BrowserModule,
